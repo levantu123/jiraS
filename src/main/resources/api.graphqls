@@ -1,0 +1,36 @@
+type Employee{
+  id:String
+  name:String
+  emailAddress:String
+  projects: [Project]
+  tasks: [Issue]
+}
+type Issue{
+  id:String
+  issueKey: String
+  creatorName:String
+  description:String
+  priority:String
+  status:String
+  summary:String
+  type:String
+  project: Project
+  assignee: Employee
+}
+
+type Project{
+  id:String
+  name:String
+  projectTypeKey:String
+}
+
+type Query{
+  allEmployees: [Employee]
+  employeesWithFilter(names: [String]!, project: [String]!): [Employee]
+  employee(id: String): Employee
+  allIssues: [Issue]
+  issue(id: String): Issue
+  allProjects: [Project]
+  project(id: String): Project
+}
+
